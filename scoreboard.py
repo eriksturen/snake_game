@@ -28,4 +28,6 @@ class Scoreboard(Turtle):
     def game_over(self):
 
         self.goto(0, 0)
-        self.write("Game over\nClick on window to exit file", align=ALIGNMENT, font=FONT)
+        self.write("Game over\nHello Timothy :)\nIf you want to play again you have\n"
+                   "to restart the whole file unfortunately"
+                   "", align=ALIGNMENT, font=FONT)
