@@ -4,6 +4,9 @@ from snake import Snake
 from scoreboard import Scoreboard
 import time
 
+# open highscore file
+
+
 
 # This file runs the main game loop.
 screen = Screen()
@@ -40,16 +43,18 @@ while game_is_on:
         scoreboard.add_score()
         snake.extend()
 
-    # detect collision with wall
+    # detect collision with wall, then resets snake and scoreboard
     if snake.head.xcor() > 290 or snake.head.xcor() < -300 or snake.head.ycor() > 290 or snake.head.ycor() < -300:
-        scoreboard.game_over()
-        game_is_on = False
+        scoreboard.reset_scoreboard()
+        snake.reset()
+        scoreboard.update_scoreboard()
 
-    # if head collides with segment in tail
+    # if head collides with segment in tail, then resets snake and scoreboard
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
-            scoreboard.game_over()
-            game_is_on = False
+            scoreboard.reset_scoreboard()
+            snake.reset()
+            scoreboard.update_scoreboard()
 
 # This must be after everything else! Makes just screen doesn't quit before it's clicked
 # without this it just flashes once
